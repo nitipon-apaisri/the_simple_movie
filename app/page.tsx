@@ -12,7 +12,7 @@ const { Meta } = Card;
 const Home = () => {
     const api = new Api();
     const imgUrl = "https://image.tmdb.org/t/p/original";
-    const { cart, addToCart } = useContext(AppContext) as appContextType;
+    const { addToCart } = useContext(AppContext) as appContextType;
     const [searchQuery, setSearchQuery] = useState<string>("");
     const [searchResults, setSearchResults] = useState<movieType[]>([]);
 
@@ -23,9 +23,6 @@ const Home = () => {
     const handleAddToCart = (product: movieType) => {
         addToCart(product);
     };
-    useEffect(() => {
-        console.log(cart);
-    }, [cart]);
     return (
         <>
             <h1>Search a movie</h1>
