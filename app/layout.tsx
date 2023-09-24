@@ -18,8 +18,13 @@ const layoutStyle: React.CSSProperties = {
     justifyContent: "space-between",
 };
 const footerStyle: React.CSSProperties = {
-    backgroundColor: "#fff",
+    backgroundColor: "#FAFAFA",
     textAlign: "center",
+};
+const contentStyle: React.CSSProperties = {
+    flex: "1 0 auto",
+    padding: "50px",
+    backgroundColor: "#fff",
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -30,7 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <Header style={headerStyle}>
                             <h1 style={{ margin: 0 }}>Header</h1>
                         </Header>
-                        <Content>{children}</Content>
+                        <Content style={contentStyle}>{children}</Content>
                         <Footer style={footerStyle}>
                             <h1 style={{ margin: 0 }}>Footer</h1>
                         </Footer>
