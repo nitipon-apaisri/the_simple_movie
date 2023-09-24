@@ -3,8 +3,13 @@
 import StyledComponentsRegistry from "@/lib/AntdRegistry";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { Layout } from "antd";
-import React from "react";
+import { Button, Col, Layout, Row, Space } from "antd";
+import React, { useContext } from "react";
+import { AppContext, AppProvider } from "./contexts/AppContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { appContextType } from "./types/generalTypes";
+import Cart from "./components/Cart";
 const { Header, Footer, Content } = Layout;
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,15 +36,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en">
             <body className={inter.className}>
                 <StyledComponentsRegistry>
-                    <Layout style={layoutStyle}>
-                        <Header style={headerStyle}>
-                            <h1 style={{ margin: 0 }}>Header</h1>
-                        </Header>
-                        <Content style={contentStyle}>{children}</Content>
-                        <Footer style={footerStyle}>
-                            <h1 style={{ margin: 0 }}>Footer</h1>
-                        </Footer>
-                    </Layout>
+                    <AppProvider>
+                        <Layout style={layoutStyle}>
+                            <Header style={headerStyle}>
+                                <Row justify={"space-between"}>
+                                    <Col span={2}>
+                                        <h1 style={{ margin: 0 }}>Header</h1>
+                                    </Col>
+                                    <Col span={2}>
+                                        <Cart />
+                                    </Col>
+                                </Row>
+                            </Header>
+                            <Content style={contentStyle}>{children}</Content>
+                            <Footer style={footerStyle}>
+                                <h1 style={{ margin: 0 }}>Footer</h1>
+                            </Footer>
+                        </Layout>
+                    </AppProvider>
                 </StyledComponentsRegistry>
             </body>
         </html>
