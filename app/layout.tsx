@@ -3,13 +3,12 @@
 import StyledComponentsRegistry from "@/lib/AntdRegistry";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { Button, Col, Layout, Row, Space } from "antd";
-import React, { useContext } from "react";
-import { AppContext, AppProvider } from "./contexts/AppContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { appContextType } from "./types/generalTypes";
+import { Col, Layout, Row } from "antd";
+import React from "react";
+import { AppProvider } from "./contexts/AppContext";
+
 import Cart from "./components/Cart";
+import AppHeader from "./components/header/AppHeader";
 const { Header, Footer, Content } = Layout;
 
 const inter = Inter({ subsets: ["latin"] });
@@ -39,14 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <AppProvider>
                         <Layout style={layoutStyle}>
                             <Header style={headerStyle}>
-                                <Row justify={"space-between"}>
-                                    <Col span={2}>
-                                        <h1 style={{ margin: 0 }}>Header</h1>
-                                    </Col>
-                                    <Col span={2}>
-                                        <Cart />
-                                    </Col>
-                                </Row>
+                                <AppHeader />
                             </Header>
                             <Content style={contentStyle}>{children}</Content>
                             <Footer style={footerStyle}>
